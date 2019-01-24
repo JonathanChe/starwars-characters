@@ -1,33 +1,47 @@
 import React from 'react';
 
 const Character = (props) => {
-  
+  const { character : {
+    name,
+    height,
+    mass,
+    'hair_color': hairColor,
+    'skin_color': skinColor,
+    'eye_color': eyeColor,
+    'birth_year': birthYear,
+    gender,
+  }} = props;
+
   return (
     <div id="card">
-      <h1>Name</h1>
+      <h2>{name}</h2>
       <div className="card-text">
-        Birth:
+        <span>Birth:</span>
+        <span> {birthYear} </span>
       </div>
       <div className="card-text">
-        Gender:
+        <span>Gender:</span>
+        <span> {gender} </span>
       </div>
       <div className="card-text">
-        Height:
+        <span>Height:</span>
+        <span> {height} </span>
       </div>
       <div className="card-text">
-        Weight:
+        <span>Mass:</span>
+        <span> {mass} </span>
       </div>
       <div className="card-text">
-        Mass:
+        <span>Hair Color:</span>
+        <span> {hairColor} </span>
       </div>
       <div className="card-text">
-        Hair Color:
+        <span>Skin Color:</span>
+        <span> {skinColor} </span>
       </div>
       <div className="card-text">
-        Skin:
-      </div>
-      <div className="card-text">
-        Eye Color:
+        <span>Eye Color:</span>
+        <span> {eyeColor} </span>
       </div>
     </div>
   );
