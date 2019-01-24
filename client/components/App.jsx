@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-require('babel-polyfill');
 import Search from './Search';
+import Character from './Character';
+import View from './View';
+
+require('babel-polyfill');
 
 class App extends Component {
 
@@ -16,6 +19,8 @@ class App extends Component {
         <div id="App">
           <h1 id="title">Star Wars Characters</h1>
           <Search />
+          <Character />
+          <View />
         </div>
       </div>
     );
