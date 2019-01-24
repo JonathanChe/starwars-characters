@@ -17,31 +17,31 @@ const Character = (props) => {
       <h2>{name}</h2>
       <div className="card-text">
         <span>Birth:</span>
-        <span> {birthYear} </span>
+        <span> {birthYear.toUpperCase()} </span>
       </div>
       <div className="card-text">
         <span>Gender:</span>
-        <span> {gender} </span>
+        <span> {gender.toUpperCase()} </span>
       </div>
       <div className="card-text">
         <span>Height:</span>
-        <span> {height} </span>
+        <span> {height.toUpperCase()} </span>
       </div>
       <div className="card-text">
         <span>Mass:</span>
-        <span> {mass} </span>
+        <span> {mass.toUpperCase()} </span>
       </div>
       <div className="card-text">
         <span>Hair Color:</span>
-        <span> {hairColor} </span>
+        <span> {hairColor.toUpperCase()} </span>
       </div>
       <div className="card-text">
         <span>Skin Color:</span>
-        <span> {skinColor} </span>
+        <span> {skinColor.toUpperCase()} </span>
       </div>
       <div className="card-text">
         <span>Eye Color:</span>
-        <span> {eyeColor} </span>
+        <span> {eyeColor.toUpperCase()} </span>
       </div>
     </div>
   );
