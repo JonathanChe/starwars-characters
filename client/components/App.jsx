@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 require('babel-polyfill');
+import Search from './Search';
 
 class App extends Component {
 
@@ -12,7 +13,10 @@ class App extends Component {
   render() {
     return (
       <div id="wallpaper">
-        <h1 id="title">Star Wars Characters</h1>
+        <div id="App">
+          <h1 id="title">Star Wars Characters</h1>
+          <Search />
+        </div>
       </div>
     );
   }

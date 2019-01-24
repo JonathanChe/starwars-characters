@@ -1,7 +1,6 @@
 * {
   padding: 0;
   margin: 0;
-  color: white;
 }
 
 #root {
@@ -16,9 +15,25 @@
   height: 100%;
 }
 
+#App {
+  height: 100vh;
+  text-align: center;
+}
+
 #title {
   text-align: center;
   padding-top: 100px;
   font-size: 7rem;
   color: #ffc600;
+}
+
+#search {
+  width: 35%;
+  height: 50px;
+  font-size: 2rem;
+  border-radius: 10px;
+  border: 1px solid gainsboro;
+  font-family: monospace;
+  outline: none;
+  text-align: center;
 }
