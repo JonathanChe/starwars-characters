@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+
 import Search from './Search';
 import Character from './Character';
 import Footer from './Footer';
+import trooper from '../../assets/trooper.png';
 
 require('babel-polyfill');
 
@@ -10,11 +12,10 @@ class App extends Component {
     super();
     this.state = {
       currentCharacters: [],
-      peopleApiRoute: 'https://swapi.co/api/people/',
       currentAPIRoute: 'https://swapi.co/api/people/',
-      nextPeopleApiRoute: null,
-      prevPeopleApiRoute: null,
-      loadingPeople: false,
+      nextApiRoute: null,
+      previousApiRoute: null,
+      loading: false,
     };
     this.fetchNext = this.fetchNext.bind(this);
     this.showCharacters = this.showCharacters.bind(this);
@@ -27,7 +28,11 @@ class App extends Component {
     this.setState({ currentCharacters: data });
   }
 
-  fetchNext(route) {
+  async fetchNext(route) {
+    await this.setState({
+      loading: true,
+      currentAPIRoute: route,
+    });
     fetch(route)
       .then(res => res.json())
       .then(response => {
@@ -35,8 +40,8 @@ class App extends Component {
         if (route === currentAPIRoute) {
           this.setState({
             currentCharacters: response.results,
-            nextPeopleApiRoute: response.next,
-            prevPeopleApiRoute: response.previous,
+            nextApiRoute: response.next,
+            previousApiRoute: response.previous,
           });
         }
       })
@@ -44,7 +49,8 @@ class App extends Component {
   }
 
   showCharacters() {
-    const { currentCharacters } = this.state;
+    const { currentCharacters, loading } = this.state;
+    if (loading) return (<img id="loading" src={trooper} alt="loading" />);
     const characters = currentCharacters.map(character => (
       <Character
         key={character.url}
@@ -55,7 +61,12 @@ class App extends Component {
   }
 
   render() {
-    const { nextPeopleApiRoute, prevPeopleApiRoute } = this.state;
+    const {
+      nextApiRoute,
+      previousApiRoute,
+      loading,
+    } = this.state;
+
     return (
       <div id="wallpaper">
         <div id="App">
@@ -65,9 +76,10 @@ class App extends Component {
             {this.showCharacters()}
           </div>
           <Footer
-            next={nextPeopleApiRoute}
-            previous={prevPeopleApiRoute}
+            next={nextApiRoute}
+            previous={previousApiRoute}
             fetchNext={this.fetchNext}
+            loading={loading}
           />
         </div>
       </div>
