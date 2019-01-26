@@ -21,11 +21,8 @@ class App extends Component {
     this.showCharacters = this.showCharacters.bind(this);
   }
 
-  async componentDidMount() {
-    const data = await fetch('https://swapi.co/api/people/')
-      .then(response => response.json())
-      .then(response => response.results);
-    this.setState({ currentCharacters: data });
+  componentDidMount() {
+    this.fetchNext('https://swapi.co/api/people/');
   }
 
   async fetchNext(route) {
@@ -42,6 +39,7 @@ class App extends Component {
             currentCharacters: response.results,
             nextApiRoute: response.next,
             previousApiRoute: response.previous,
+            loading: false,
           });
         }
       })
